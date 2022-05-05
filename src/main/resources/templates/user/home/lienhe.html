@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{user/dashboarhlayoutUser.html}">
+
+<head>
+
+
+</head>
+<style>
+
+</style>
+<body>
+
+    <section id="contact" class="contact mt-5"  layout:fragment="content" style="background-color: peachpuff;border-radius: 15px;">
+      <div class="container ">
+
+       
+    
+        <div class="row ">
+    
+          <div class="col-lg-6">
+    
+            <div class="row mt-5">
+              <div class="col-md-12 " >
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3>Địa chỉ</h3>
+                  <p>137 - Nguyễn Thị Thập - Thanh Khê - Đà Nẵng</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Email Liên Hệ</h3>
+                  <p>namtppd04054@gmail.com<br>nantran481@gmail.com</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Số điện thoại</h3>
+                  <p>0924225196</p>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          
+          <div class="col-lg-6 mt-5">
+          	
+            <form action="/all/index/send" method="post" role="form" class="php-email-form">
+              <div class="form-row">
+				
+                <div class="col form-group">
+                  <input type="email" class="form-control hidden" name="to"  id="to" placeholder="Email" data-rule="email"style="border-radius: 15px ;" value="nantran481@gmail.com"  
+                    data-msg="Email khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Góp Ý"style="border-radius: 15px;"
+                  data-rule="minlen:4" data-msg="thÃ´ng tin khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="content" rows="5" data-rule="required"style="border-radius: 15px;"
+                  data-msg="Ä�iá»�n thÃ´ng tin gÃ³p Ã½" placeholder="Nội Dung"></textarea>
+                <div class="validate"></div>
+              </div>
+            
+              <div class="text-center"><button type="submit"  style="margin-bottom:10px;border-radius: 15px;" >Gửi Nội Dung Góp Ý</button></div>
+            </form>
+          </div>
+    
+        </div>
+    
+      </div>
+      </section><!-- End Contact Section -->
+
+</body>
+
+</html>

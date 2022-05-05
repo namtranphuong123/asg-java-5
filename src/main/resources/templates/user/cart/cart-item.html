@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{user/dashboarhlayoutUser.html}">
+
+<head>
+
+
+</head>
+
+<body>
+
+
+	
+    <section class="mt-5" layout:fragment="content" style="background-color: khaki;">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th>Acction</th>
+                </tr>
+            </thead>
+            <tbody >
+
+                <form action="/cart/update/${item.id}" method="post" th:each=" item : ${s}">
+
+                    <input type="hidden" name="id" th:value="${item.qty}" />
+                    <tr>
+                        <td>[[${no }]]</td>
+                        <td>[[${item.name}]]</td>
+                        <td>[[${item.price}]]</td>
+                        <td><input th:value="${item.qty}" onblur="this.form.submit()" /></td>
+                        <td> [[${item.price*item.qty}]]</td>
+                        <td><a class="btn btn-danger" th:href="@{'/user/cart/delete/' +${item.productId}}">Remove</a>
+                        </td>
+                    </tr>
+                </form>
+
+            </tbody >
+        </table>
+        <hr>
+        <h2 class="ml-5">Amount: [[${t}]] $</h2>
+        <hr>
+        <div >
+            <a th:href="@{/all/index}" style="background-color: rgb(120, 116, 121);"
+        class="btn btn-outline-warning"> Mua Thêm</a>
+
+        <a th:href="@{/user/cart/clear}"
+        class="btn btn-outline-warning" style="background-color: rgb(228, 47, 23);">Clear Cart</a>
+      
+        <a th:href="@{/user/cart/checkout}"
+        class="btn btn-outline-warning" style="background-color: rgb(106, 168, 240);">CkekOut</a>
+      
+        </div>
+        
+    </section>
+   
+   
+</body>
+
+</html>

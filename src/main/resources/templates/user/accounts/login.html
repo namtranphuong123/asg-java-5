@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+  <script src="angular.min.js"></script>
+  <link rel="stylesheet" href="css/css.css">
+</head>
+
+<body style="background-color: salmon; width: auto;">
+
+  <section class="row" layout:fragment="content">
+    <div class="col-4 offset-4   mt-4">
+      <form th:action="@{/ulogin}" method="post" th:object="${account}">
+        <div class="card">
+          <div class="card-header ">
+            <h2>Login</h2>
+            <div th:if="@{message != null}" class="alert alert-primary" role="alert">
+              <i>[[${message}]]</i>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- duy trì trạng thái nhận biết là s or u kiểm tra nếu is edit là update và ngược lại là save-->
+            <input type="hidden" th:field="*{isEdit}">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" th:field="*{email}" id="email" aria-describedby="usernamehelpId"
+                placeholder="Username">
+
+
+              <small th:if="${#fields.hasErrors('email')}" id="productIdhelpId" class="form-text text-muted">user is
+                required</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" th:field="*{password}" id="password"
+                aria-describedby="passwordhelpId" placeholder="Password">
+              <small id="passwordhelpId" th:if="${#fields.hasErrors('password')}" class="form-text text-muted">password
+                is invalid</small>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" th:field="*{rememberme}" id="" value="false" checked>
+                Remember me ?
+              </label>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <button type="reset" class="btn btn-secondary">Reset</button>
+
+
+            <button class="btn btn-primary"> <i class="fas fa-sign-in-alt  mr-1 "> Login</i> </button>
+
+            <a class="btn btn-warning" th:href="@{/all/index}"> Trang Chủ
+            </a>
+
+            <a class="btn btn-primary" th:href="@{/all/accounts/add}"> >Đăng Ký
+            </a>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

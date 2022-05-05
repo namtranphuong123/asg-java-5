@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head></head>
+
+<body>
+    <div th:fragment="nav">
+        <div class="row mt-4">
+            <nav class="navbar navbar-expand-sm " style="background-color: rgb(248, 219, 165);width: 1137px;border-radius: 15px;" >
+                <a class="navbar-brand" th:href="@{/all/index}">Trang Chá»§</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                       
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/user/cart/views}"> Giá»� HÃ ng </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/all/index/lienhe}">LiÃªn há»‡ </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/user/cart/list}"> Danh SÃ¡ch Customer </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/accounts}">For Admin</a>              
+                       </li>
+                        <li class="dropdown m-menu-fw" style="margin-top: 8px; margin-left: 30px">
+                            <a href="" data-toggle="dropdown" nclass="dropdown-toggle">
+                                TÃ i Khoáº£n<span><i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown-menu" ng-controller="login_ctrl">
+                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li class="dropdown-item"ng-if="log == 1"><a th:href="@{/ulogin}">Ä�Äƒng nháº­p</a></li>
+                                    <li class="dropdown-item" ng-if="log == 1"><a th:href="@{/all/accounts/add}">Ä�Äƒng kÃ½</a></li>
+                                    <li class="dropdown-item" ng-if="log == 0"><a href="#"th:href="@{/ulogout}">Ä�Äƒng xuáº¥t</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li ng-if="log == 1"><a href="#!forgot">QuÃªn máº­t kháº©u</a></li>
+                                    <li ng-if="log == 1"><a s>Chá»‰nh Sá»­a ThÃ´ng Tin</a></li>
+                                    
+                                  </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+
+</body>
+
+</html>

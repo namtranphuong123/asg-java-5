@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{admin/dashboarhlayout.html}">
+
+<head>
+
+
+</head>
+
+<body>
+
+  <section class="row" layout:fragment="content">
+    <div class="col  mt-4">
+      <form th:action="@{/admin/products/saveOrUpdate}" method="post" th:object="${product}" enctype="multipart/form-data">  
+        
+       
+
+        <div class="card"style="background-color: khaki;">
+          <div class="card-header">
+            <h2>Add new products</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-7">
+                <div class="form-group">
+                  <label for="productId">ProductId:</label>
+                  <input type="hidden" th:filed="*{isEdit}">
+                  <input type="text" class="form-control" th:field="*{productId}" aria-describedby="productIdhelpId"
+                    placeholder="ProductId" readonly>
+                  <small th:if="${#fields.hasErrors('productId')}" id="productIdhelpId"
+                    class="form-text text-muted">Product Id is required</small>
+                </div>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" th:field="*{name}" aria-describedby="namehelpId"
+                    placeholder="Name">
+                  <small th:if="${#fields.hasErrors('name')}" id="namehelpId" class="form-text text-muted">Name is
+                    required</small>
+                </div>
+                <div class="form-group">
+                  <label for="quanltity">Quanltity</label>
+                  <input type="text" class="form-control" th:field="*{quanltity}" aria-describedby="quantityhelpId"
+                    placeholder="Quantity">
+                  <small th:if="${#fields.hasErrors('quanltity')}" id="quanltitylpId"
+                    class="form-text text-muted">Quanltity is required</small>
+                </div>
+                <div class="input-group form-group">
+                  <span class="input-group-text">Unit Price</span>
+                  <input type="number" th:field="*{unitPrice}" class="form-control" placeholder="unitPrice">
+                  <span class="input-group-text">$</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="category">Category Id</label>
+                  <select class="form-control" th:field="*{categoryId}" name="category" id="category">
+                    <option th:each="category : ${categories}"
+                    th:value="${category.categoryId}"
+                    th:text="${category.name}"
+                    >
+                    
+                  </select>
+                </div>
+
+              </div>
+              <div class="col-3">
+                
+                <script>
+                  function chooseFile(fileInput){
+                    if(fileInput.files && fileInput.files[0]){
+                      var reader = new FileReader();
+                      reader.onload = function (e){
+                        $('#image').attr('src',e.target.result);
+  
+                      }
+                      reader.readAsDataURL(fileInput.files[0]);
+                    }
+                  }
+                </script>
+                  <img id="image" src="/images/images.jpg" th:src="@{'/images/' + ${product.image}}"width="90%"  class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+                                                                    <!-- lấy dữ liệu từ folder images + tên ảnh đổ lại vào html -->
+                  
+                                                                
+                
+                <div class="form-group" style="width: 450px;">
+                  <label for="Productimage">Image File</label>
+                  <input type="file" onchange="chooseFile(this)" class="form-control-file" name="imageFile" placeholder="Product Image"
+                    aria-describedby="productImage\">
+
+                    <input type="hidden" name="imageEdit" th:value="${product.image}">
+                  <small th:if="${#fields.hasErrors('image')}" id="imagehelpId" class="form-text text-muted">Image is
+                    required</small>
+                </div>
+                <div class="input-group form-group" style="width: 430px;">
+                  <span class="input-group-text">Discount</span>
+                  <input type="text" th:field="*{discount}" class="form-control" placeholder="Discount">
+                  <span class="input-group-text">%</span>
+                </div>
+                <div class="form-group" style="width: 430px;">
+                  <label for="status">Status</label>
+                  <select class="form-control" th:field="*{status}">
+                    <option value="1">Out of Stock</option>
+                    <option value="2">On Sale</option>
+                    <option value="3">Feattured</option>
+                    <option value="4">Bestseller</option>
+
+                    <optionn>Out of Oder</optionn>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea class="form-control" th:field="*{description}" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            <button type="reset" class="btn btn-secondary">Reset</button>
+                        <a th:href="@{/admin/products/}" class="btn btn-success"><i class="fas fa-list"></i>List Product</a>
+
+                        <button class="btn btn-primary"><i class="fas fa-save"></i>
+                            <span th:if="${product.isEdit}">Update</span>  
+
+                           
+                            <span th:unless="${product.isEdit}">Save</span>
+
+                   
+                        </button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboarhlayout.html}">
+
+<head>
+
+
+</head>
+
+<body>
+
+	<section class="row mt-4" layout:fragment="content">
+
+
+
+
+		<div class="col">
+
+
+			<div class="card" th:each=" product : ${product}" style="background-color: khaki;">
+				<div class="card-header " style="background-color: tomato;">
+					<h2 style="text-align: center; ">[[${product.name}]]</h2>
+				</div>
+				<div class=" row card-body">
+					<div class="col-6">
+						<img style="margin-left: 60px ;" th:src="@{'/images/'+${product.image}}" class="img-fluid "
+							alt="" width="240 px">
+					</div>
+					<div class="col-6  float-right">
+						<h4 style="color: violet;">Name : [[${product.name}]]</h4>
+						<h4> Quantity : [[${product.quanltity}]]</h4>
+						<h4 style="color: yellow;"> UnitPrice : [[${product.unitPrice}]]</h4>
+						<h4 style="color: red;"> Discount : [[${product.discount}]] %</h4>
+						<h4> Status : [[${product.status}]]</h4>
+						<h4>Description : [[${product.description}]]</h4>
+						
+					</div>
+					
+
+				</div>
+				<div class="card-footer"><a th:href="@{/admin/products/}"  class="btn btn-success "><i class="fas fa-list"></i>List Product</a></div>
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		</div>
+	</section>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{user/dashboarhlayoutUser.html}">
+
+<head>
+
+
+</head>
+
+<body>
+
+	<section class="row mt-4" layout:fragment="content">
+
+
+
+
+		<div class="col">
+
+
+			<div class="card" th:each=" item : ${a}" style="background-color: khaki;">
+				
+				<div class=" row card-body">
+					
+					<div class="col-6  float-right">
+						<h4 style="color: violet;">Mã đơn hàng của bạn là : [[${item.orderId}]]</h4>
+						<h4 style="color: red;">Đơn hàng sẽ được chuyển đến địa chỉ của bạn đã đăng ký </h4>
+						
+						
+					</div>
+					
+
+				</div>
+				<div class="card-footer"><a th:href="@{/all/index}"  class="btn btn-success "><i class="fas fa-list"></i>Trang chủ</a></div>
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		</div>
+	</section>
+
+</body>
+
+</html>

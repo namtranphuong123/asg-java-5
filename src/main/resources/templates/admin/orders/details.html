@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{admin/dashboarhlayout.html}"
+>
+
+<head>
+
+
+</head>
+
+<body>
+    <section class="row" layout:fragment="content">
+
+        <div class="col  mt-4">
+            <div class="card"style="background-color: khaki;">
+                <div class="card-header">
+                    <h2>List of order</h2>
+                </div>
+                <div class="card-body">
+					<div th:if="${message != null}" class="alert alert-primary" role="alert">
+						<i>[[${message}]]</i>
+					</div>
+                 
+                    <table class="table table-striped table-inverse ">
+                        <thead class="thead-inverse">
+                           <tr>
+										<th>Hình ảnh</th>
+										<th>Tên sản phẩm</th>
+										<th>Giá tiền</th>
+										<th>Số lượng</th>
+										<th>Thể loại</th>
+
+									</tr>
+                        </thead>
+                        <tbody>
+                          	<tr th:each=" OrderDetails : ${OrderDetailss}">
+											<td><img alt=""width="240 px"
+												style="margin-left: -8px; margin-right: -20px;"
+												th:src="@{'/images/'+${OrderDetails.product.image}}"/>
+												
+												
+												</td>
+											<td scope="row">[[${OrderDetails.product.name }]]</td>
+											<td> [[${OrderDetails.UnitPrice}]]
+													</td>
+											<td>[[${OrderDetails.quantity}]]</td>
+											<td>[[${OrderDetails.product.category.name}]]</td>
+
+										</tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-muted">
+                   <div class="mt-2">
+						<tr>
+							<td><a href="/admin/orders"class="btn btn-success"><i class="fas fa-list"></i> Danh sách đơn hàng</a></td>
+							<td class="hidden-xs"></td>
+						</tr>
+					</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>

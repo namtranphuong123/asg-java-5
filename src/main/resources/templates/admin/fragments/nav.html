@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head></head>
+
+<body>
+    <div th:fragment="nav">
+        <div class="row mt-4">
+            <nav class="navbar navbar-expand-sm " style="background-color: rgb(248, 219, 165);width: 1137px;border-radius: 15px;" >
+              
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/customers/searchpaginated}">Quản Lý Khách Hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/categories/searchpaginated}">Quản lý Loại Hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/products/searchpaginated}">Quản Lý Sản Phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  th:href="@{/admin/orders}">Quản Lý Order</a>
+                        </li>
+                        
+                        <li class="dropdown m-menu-fw" style="margin-top: 8px; margin-left: 30px">
+                            <a href="" data-toggle="dropdown" nclass="dropdown-toggle">
+                                Tài Khoản<span><i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown-menu" ng-controller="login_ctrl">
+                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li class="dropdown-item"ng-if="log == 1"><a th:href="@{/alogin}">Đăng nhập</a></li>
+                                    <li class="dropdown-item" ng-if="log == 1"><a th:href="@{/admin/accounts/add}">Đăng ký</a></li>
+                                    <li class="dropdown-item" ng-if="log == 0"><a href="#"th:href="@{/logout}">Đăng xuất</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li ng-if="log == 1"><a href="#!forgot">Quên mật khẩu</a></li>
+                                    <li ng-if="log == 1"><a href="#!">Đổi mật khẩu</a></li>
+                                   
+                                  </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{user/dashboarhlayoutUser.html}">
+
+<head>
+
+
+</head>
+
+<body>
+
+
+    <section class="row" layout:fragment="content">
+        <div class=" col   mt-4">
+            <form th:action="@{/all/accounts/saveOrUpdate}" method="post" th:object="${customer}"
+                enctype="multipart/form-data">
+
+
+                <div class="card" style="background-color: khaki;">
+                    <div class="card-header">
+                        <h2>Register</h2>
+                    </div>
+                    <div class="card-body">
+
+
+
+                        <div class="row ">
+                            <div class="form-group col-sm-6 ">
+                                <label for="customerId">customerId:</label>
+                                <input type="hidden" th:filed="*{isEdit}">
+                                <input type="text" class="form-control" th:field="*{customerId}"
+                                    aria-describedby="customerIdhelpId" placeholder="customerId" readonly>
+                                <small th:if="${#fields.hasErrors('customerId')}" id="customerIdhelpId"
+                                    class="form-text text-muted">customer Id is required</small>
+                            </div>
+                            <div class="form-group col-sm-6 ">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" th:field="*{name}" aria-describedby="namehelpId"
+                                    placeholder="Name">
+                                <small th:if="${#fields.hasErrors('name')}" id="namehelpId"
+                                    class="form-text text-muted">Name is
+                                    required</small>
+                            </div>
+                        </div>
+                        
+                           
+
+                  
+                        <div class="row">
+                            <div class="form-group col-sm-6 ">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" th:field="*{email}"
+                                    aria-describedby="emailhelpId" placeholder="email">
+                                <small th:if="${#fields.hasErrors('email')}" id="emaillpId"
+                                    class="form-text text-muted">email is required</small>
+                            </div>
+
+                            <div class="form-group col-sm-6 ">
+                                <label for="password">password</label>
+                                <input type="password" class="form-control" th:field="*{password}"
+                                    aria-describedby="passwordhelpId" placeholder="password">
+                                <small th:if="${#fields.hasErrors('password')}" id="passwordlpId"
+                                    class="form-text text-muted">password is required</small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6 ">
+                                <label for="phone">phone</label>
+                                <input type="text" class="form-control" th:field="*{phone}"
+                                    aria-describedby="phonehelpId" placeholder="phone">
+                                <small th:if="${#fields.hasErrors('phone')}" id="phonelpId"
+                                    class="form-text text-muted">phone is required</small>
+                            </div>
+                                
+
+                            <div class="form-group col-sm-6 ">
+                                <label for="">Status</label>
+                            <select class="form-control" th:field="*{status}" name="status" id="status">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+
+                                <optionn>Out of Oder</optionn>
+
+                            </select>
+                            </div>
+
+                           
+                        </div>
+                         <div class="row">
+                            <div class="form-group col ">
+                                <label for="phone">diachi</label>
+                                <input type="text" class="form-control" th:field="*{diachi}"
+                                    aria-describedby="phonehelpId" placeholder="phone">
+                                <small th:if="${#fields.hasErrors('diachi')}" id="phonelpId"
+                                    class="form-text text-muted">diachi is required</small>
+                            </div>
+                                </div>
+                       
+
+
+
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        
+
+                        <button class="btn btn-primary"><i class="fas fa-save"></i>
+                            <span th:if="${customer.isEdit}">Update</span>
+
+
+                            <span th:unless="${customer.isEdit}">Save</span>
+
+
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+</html>
